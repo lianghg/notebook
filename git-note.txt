@@ -20,8 +20,27 @@
 
 查看本地所有分支：git branch [--merged],[--no-merged]
 
+
 【远程】
 
 提交到服务器分支：git push origin demo
 
 从服务器删除分支：git push origin --delete demo
+
+添加远程仓库地址[git remote add <shortname> <url> ]：git remote add roigin1 https:\\github\x\y
+
+查看指定仓库：git remote show origin1
+
+重命名：git remote rename oldname newname
+
+移除仓库：git remote rm origin1
+
+查看所有远程仓库地址：git remote -v
+
+推送到远程仓库：git push origin master
+
+拉取远程仓库数据：git fetch roigin1
+
+合并拉取的数据：git merge origin1/master
+
+删除远程仓库分支：git push origin1 --delete serverfix
