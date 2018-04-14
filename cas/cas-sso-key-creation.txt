@@ -1,0 +1,50 @@
+C:\WINDOWS\system32>keytool -genkey -alias cas -keyalg RSA -keystore F:/apache-tomcat8-cas/cas-sso-key/cas
+输入密钥库口令:
+再次输入新口令:
+您的名字与姓氏是什么?
+  [Unknown]:  cas
+您的组织单位名称是什么?
+  [Unknown]:  cas
+您的组织名称是什么?
+  [Unknown]:  cas
+您所在的城市或区域名称是什么?
+  [Unknown]:  cas
+您所在的省/市/自治区名称是什么?
+  [Unknown]:  cas
+该单位的双字母国家/地区代码是什么?
+  [Unknown]:  ZH
+CN=cas, OU=cas, O=cas, L=cas, ST=cas, C=ZH是否正确?
+  [否]:  y
+
+输入 <cas> 的密钥口令
+        (如果和密钥库口令相同, 按回车):
+
+
+C:\WINDOWS\system32>keytool -export -file F:/apache-tomcat8-cas/cas-sso-key/cas.crt -alias cas -keystore F:/apache-tomcat8-cas/cas-sso-key/cas
+输入密钥库口令:
+
+C:\WINDOWS\system32>keytool -import -keystore "C:/Program Files/Java/jre1.8.0_144/lib/security/cacerts" -file F:/apache-tomcat8-cas/cas-sso-key/cas.crt -alias cas
+输入密钥库口令:
+所有者: CN=cas, OU=cas, O=cas, L=cas, ST=cas, C=ZH
+发布者: CN=cas, OU=cas, O=cas, L=cas, ST=cas, C=ZH
+序列号: 7dba4781
+有效期开始日期: Mon Jan 15 11:27:57 CST 2018, 截止日期: Sun Apr 15 11:27:57 CST 2018
+证书指纹:
+         MD5: 5A:3E:1F:F2:0F:DF:30:A9:83:42:B4:52:53:0A:7C:FF
+         SHA1: 1E:D2:57:85:39:60:1F:B5:D8:B4:15:7C:49:85:51:D6:CB:7F:5E:BD
+         SHA256: DF:DB:76:B9:87:E3:9E:1B:70:F6:AA:60:B1:20:53:48:B4:90:9A:B4:7C:0A:E2:DF:B8:FC:9F:23:37:3F:64:DF
+         签名算法名称: SHA256withRSA
+         版本: 3
+
+扩展:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 1E 48 A3 A6 3B F7 C3 50   BD 3A C7 E4 B7 38 D5 EB  .H..;..P.:...8..
+0010: BB E9 C1 A3                                        ....
+]
+]
+
+是否信任此证书? [否]:  y
+证书已添加到密钥库中

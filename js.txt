@@ -1,0 +1,59 @@
+var b1 = Boolean("");//返回false,空字符串 
+var b2 = Boolean("s");//返回true，非空字符串 
+var b3 = Boolean(0);//返回false，数字0 
+var b4 = Boolean(1);//返回true，非0数字 
+var b5 = Boolean(-1);//返回true，非0数字 
+var b6 = Boolean(null);//返回false 
+var b7 = Boolean(undefined);//返回false 
+var b8 = Boolean(new Object());//返回true，对象 
+
+Number(false) //返回0 
+Number(true) //返回1 
+Number(undefined) //返回NaN 
+Number(null) //返回0 
+Number("1.2") //返回1.2 
+Number("12") //返回12 
+Number("1.2.3") //返回NaN 
+Number(new Object()) //返回NaN 
+Number(123) //返回123 
+
+var s1 = null; 
+var s2 = String(t1);//s2的值是 "null" 
+var s3 = s1.toString();//会报错 
+var s4; 
+var s5 = String(t4);//s5的值是 "undefined" 
+var s6 = t4.toString();//会报错 
+
+var isFocus=$("#tRow").is(":focus");  
+if(true==isFocus){  
+    alert("有");  
+}else{  
+    alert("无");  
+}
+
+注意，firefox是支持 event.which去获得键的ascii码，而ie是同时支持 
+event.keyCode和 event.which的 
+$('#someTextBox').keypress(function(event){  
+    var keycode = (event.keyCode ? event.keyCode : event.which);  
+    if(keycode == '13'){  
+        alert('You pressed a "enter" key in textbox');    
+    }  
+});  
+  
+$(document).keypress(function(event){  
+    var keycode = (event.keyCode ? event.keyCode : event.which);  
+    if(keycode == '13'){  
+        alert('You pressed a "enter" key in somewhere');      
+    }  
+});  
+
+//精确到N位小数位
+(Number(value/10000)).toFixed(2);
+
+//序列化表单
+var params1 = $('#jsxmCriterion').serialize();
+var params2 = $('#jsxmCriterion').serializeArray();
+console.log(params1);  //name=zhangsan&sex=1&age=20
+console.log(params2);  //[Object, Object, Object]
+
+if ($.inArray(row.name, names)>=0){

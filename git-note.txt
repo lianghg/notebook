@@ -44,3 +44,8 @@
 合并拉取的数据：git merge origin1/master
 
 删除远程仓库分支：git push origin1 --delete serverfix
+
+强制覆盖本地版本
+$ git fetch --all
+$ git reset --hard origin/master 
+$ git pull
