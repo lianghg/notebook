@@ -44,3 +44,5 @@
 合并拉取的数据：git merge origin1/master
 
 删除远程仓库分支：git push origin1 --delete serverfix
+
+查看本地和远程仓库的提交对比情况：git branch -vv
