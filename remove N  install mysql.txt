@@ -1,0 +1,63 @@
+centos下彻底删除MYSQL 和重新安装MYSQL
+在Centos6.3上装了一个Mysql,结果mysql库被我玩丢了（这里面管理了mysql的权限）。现在采用先彻底删除，然后重新安装Mysql.
+
+1 删除Mysql
+
+   yum remove  mysql mysql-server mysql-libs mysql-server;
+
+    find / -name mysql 将找到的相关东西delete掉；
+
+    rpm -qa|grep mysql(查询出来的东东yum remove掉)
+
+
+2 安装Mysql
+
+一、检查系统是否安装其他版本的MYSQL数据
+yum list installed | grep mysql
+yum -y remove mysql-libs.x86_64
+
+二、安装及配置
+wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
+rpm -ivh mysql-community-release-el6-5.noarch.rpm
+yum repolist all | grep mysql
+1、安装MYSQL数据库
+yum install mysql-community-server -y
+
+2、设置为开机启动
+chkconfig --list | grep mysqld
+chkconfig mysqld on
+
+3、设置密码
+/usr/bin/mysqladmin -u root password 'root@123'
+
+4、修改root密码
+mysql -uroot -p123456
+
+mysql> select Host,User,Password from user where User='root';
++-----------------------+------+-------------------------------------------+
+| Host                  | User | Password                                  |
++-----------------------+------+-------------------------------------------+
+| localhost             | root | *4A82FDF1D80BA7470BA2E17FEEFD5A53D5D3B762 |
+| localhost.localdomain | root |                                           |
+| 127.0.0.1             | root |                                           |
+| ::1                   | root |                                           |
++-----------------------+------+-------------------------------------------+
+4 rows in set (0.00 sec)
+
+mysql> update user set Password = password('123456') where User='root';
+Query OK, 4 rows affected (0.03 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+mysql> select Host,User,Password from user where User='root';
++-----------------------+------+-------------------------------------------+
+| Host                  | User | Password                                  |
++-----------------------+------+-------------------------------------------+
+| localhost             | root | *6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9 |
+| localhost.localdomain | root | *6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9 |
+| 127.0.0.1             | root | *6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9 |
+| ::1                   | root | *6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9 |
++-----------------------+------+-------------------------------------------+
+4 rows in set (0.00 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.00 sec)

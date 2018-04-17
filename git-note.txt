@@ -46,3 +46,8 @@
 删除远程仓库分支：git push origin1 --delete serverfix
 
 查看本地和远程仓库的提交对比情况：git branch -vv
+
+强制覆盖本地版本
+$ git fetch --all
+$ git reset --hard origin/master 
+$ git pull
