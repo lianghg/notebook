@@ -1,0 +1,144 @@
+security.basic.authorize-mode
+要运用的安全授权模式。
+
+security.basic.enabled
+开启基本身份验证。 （默认值： true 。 ）
+
+security.basic.path
+要保护的路径，用逗号分隔。 （默认值： [/**] 。 ）
+
+security.basic.realm
+HTTP基本领域（realm）用户名。 （默认值： Spring 。 ）
+
+security.enable-csrf
+开启跨站请求伪造（cross-site request forgery）支持。 （默认值： false 。 ）
+
+security.filter-order
+安全过滤器链顺序。 （默认值： 0 。 ）
+
+security.headers.cache
+开启缓存控制HTTP头。 （默认值： false 。 ）
+
+security.headers.content-type
+开启 X-Content-Type-Options 头。 （默认值： false 。 ）
+
+security.headers.frame
+开启 X-Frame-Options 头。 （默认值： false 。 ）
+
+security.headers.hsts
+HTTP Strict Transport Security（HSTS）模式（可设置为 none 、 domain 、 all ） 。
+
+security.headers.xss
+开启跨站脚本（cross-site scripting）保护。 （默认值： false 。 ）
+
+security.ignored
+要从默认保护路径中排除掉的路径列表，用逗号分隔。
+
+----------------------------------------------------------------------------------------
+
+security.oauth2.client.access-token-uri
+用于获取访问令牌的URI。
+
+security.oauth2.client.access-token-validity-seconds
+在令牌过期前多长时间验证一次。
+
+security.oauth2.client.additional-information. [key]
+设置额外的信息，令牌授予者会将其添加到令牌里。
+
+security.oauth2.client.authentication-scheme
+传送持有人令牌（bearer token）的方法，包括 form 、 header 、 none 、 query ，可选其一。（默认值： header 。 ）
+
+security.oauth2.client.authorities
+要赋予经授权客户端的权限。
+
+security.oauth2.client.authorized-grant-types
+客户端可用的授予类型。
+
+security.oauth2.client.auto-approve-scopes
+客户端自动通过的范围。
+
+security.oauth2.client.client-authentication-scheme
+在客户端身份认证时用于传输身份认证信息的方法， 包括 form 、 header 、 none 、 query ，可选其一。 （默认值： header 。 ）
+
+security.oauth2.client.client-id
+OAuth2客户端ID。
+
+security.oauth2.client.client-secret
+OAuth2客户端密钥。默认随机生成。
+
+security.oauth2.client.grant-type
+获得资源访问令牌的授予类型。
+
+security.oauth2.client.id
+应用程序的客户端ID。
+
+security.oauth2.client.pre-established-redirect-uri
+与服务器预先建立好的重定向URI。如果设置了该属性，用户授权请求中的重定向URI会被忽略，因为服务器不需要它。
+
+security.oauth2.client.refresh-token-validity-seconds
+刷新令牌在过期前的有效时间。
+
+security.oauth2.client.registered-redirect-uri
+客户端里注册的重定向URI，用逗号分隔。
+
+security.oauth2.client.resource-ids
+与客户端关联的资源ID，用逗号分隔。
+
+security.oauth2.client.scope
+客户端分配的域。
+
+security.oauth2.client.token-name
+令牌名称。
+
+security.oauth2.client.use-current-uri
+请求里的当前URI （如果设置了的话） 是否优先于预建立的重定向URI。 （默认值： true 。 ）
+
+security.oauth2.client.user-authorization-uri
+用户要重定向以便授访问令牌的URI。
+
+security.oauth2.resource.id
+资源的标识符。
+
+security.oauth2.resource.jwt.key-uri
+JWT令牌的URI。如果没有配置 key-value ，使用的又是公钥，那么可以对这个属性进行设置。
+
+security.oauth2.resource.jwt.key-value
+JWT令牌的验证密钥，可以是对称密钥，也可以是PEM编码的RSA公钥。如果没有配置
+
+这个属性，那么可以用 key-uri 代替。
+security.oauth2.resource.prefer-token-info
+
+174 附录 C 配置属性
+使用令牌的信息，设置为 false 则使用用户信息。 （默认值： true 。 ）
+security.oauth2.resource.service-id
+服务ID。 （默认值： resource 。 ）
+
+security.oauth2.resource.token-info-uri
+令牌解码端点URI。
+
+security.oauth2.resource.token-type
+在使用 userInfoUri 时发送的令牌类型。
+
+security.oauth2.resource.user-info-uri
+用户端点的URI。
+
+security.oauth2.sso.filter-order
+在没有显式提供 WebSecurityConfigurerAdapter 时应用的过滤器顺序，在 Web-SecurityConfigurerAdapter 里也可以指定顺序。
+
+security.oauth2.sso.login-path
+登录页的路径——登录页是触发重定向到OAuth2授权服务器的页面。 （默认值：/login 。 ）
+
+security.require-ssl
+对所有请求开启安全通道。 （默认值： false 。 ）
+
+security.sessions
+创建会话使用的策略。 （可选值包括： always 、 never 、 if_required 、 stateless 。 ）
+
+security.user.name
+默认的用户名。 （默认值： user 。 ）
+
+security.user.password
+默认用户的密码。
+
+security.user.role
+赋予默认用户的角色。

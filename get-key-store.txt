@@ -1,0 +1,10 @@
+demo1:
+	CAS_SSO_MATRIX
+
+keytool -genkey -alias CAS_SSO_MATRIX -keyalg RSA -keystore D:/tomcat-set/cas-keystore/CAS_SSO_MATRIX.keystore
+
+（2）导出证书
+keytool -export -file D:/tomcat-set/cas-keystore/CAS_SSO_MATRIX.crt -alias CAS_SSO_MATRIX -keystore D:/tomcat-set/cas-keystore/CAS_SSO_MATRIX.keystore
+
+（3）将证书导入到JDK中，出现如下图表示导出成功。注：这里输入密码是JDK的，如果没有修改过密码为：changeit
+keytool -import -keystore "C:/Program Files/Java/jre1.8.0_144/lib/security/cacerts" -file D:/tomcat-set/cas-keystore/CAS_SSO_MATRIX.crt -alias CAS_SSO_MATRIX
