@@ -20,6 +20,14 @@
 
 查看本地所有分支：git branch [--merged],[--no-merged]
 
+创建轻量级标签
+git tag v1.0
+
+创建附注标签
+git -a tag v1.0 -m '注释说明'
+
+删除本地标签
+git tag -d v1.4-lw
 
 【远程】
 
@@ -51,3 +59,9 @@
 $ git fetch --all
 $ git reset --hard origin/master 
 $ git pull
+
+创建附注标签之后共享标签
+git push origin v1.0
+
+删除本地标签之后 删除远程仓库的标签
+git push origin :refs/tags/v1.0
