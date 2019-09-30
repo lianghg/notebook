@@ -1,0 +1,33 @@
+-Xmx    Java Heap最大值，默认值为物理内存的1/4；
+-Xms    Java Heap初始值，Server端JVM最好将-Xms和-Xmx设为相同值，开发测试机JVM可以保留默认值；
+-Xmn    Java Heap Young区大小，不熟悉最好保留默认值；
+-Xss      每个线程的Stack大小，不熟悉最好保留默认值；
+-XX:PermSize：设定内存的永久保存区域； 
+-XX:MaxPermSize：设定最大内存的永久保存区域；
+-XX:NewSize：设置JVM堆的‘新生代’的默认大小；
+-XX:MaxNewSize：设置JVM堆的‘新生代’的最大大小； 
+
+JVM初始分配的内存由-Xms指定，默认是物理内存的1/64；JVM最大分配的内存由-Xmx指 定，默认是物理内存的1/4。
+默认空余堆内存小于 40%时，JVM就会增大堆直到-Xmx的最大限制；空余堆内存大于70%时，JVM会减少堆直到-Xms的最小限制。
+因此服务器一般设置-Xms、 -Xmx相等以避免在每次GC 后调整堆的大小。可以利用JVM提供的-Xmn -Xms -Xmx等选项可进行堆内存设置，
+一般的要将-Xms和-Xmx选项设置为相同，而-Xmn为1/4的-Xmx值，建议堆的最大值设置为可用内存的最大值的80%。
+
+#三种内存溢出异常介绍
+1. OutOfMemoryError： Java heap space  堆溢出
+内存溢出主要存在问题就是出现在这个情况中。当在JVM中如果98％的时间是用于GC且可用的 Heap size 不足2％的时候将抛出此异常信息。
+
+2. OutOfMemoryError： PermGen space   非堆溢出（永久保存区域溢出）
+这种错误常见在web服务器对JSP进行pre compile的时候。如果你的WEB APP下都用了大量的第三方jar, 其大小超过了jvm默认的大小(4M)那么就会产生此错误信息了。如果web app用了大量的第三方jar或者应用有太多的class文件而恰好MaxPermSize设置较小，超出了也会导致这块内存的占用过多造成溢出，或者tomcat热部署时侯不会清理前面加载的环境，只会将context更改为新部署的，非堆存的内容就会越来越多。
+
+3. OutOfMemoryError： unable to create new native thread.   无法创建新的线程
+这种现象比较少见，也比较奇怪，主要是和jvm与系统内存的比例有关。这种怪事是因为JVM已经被系统分配了大量的内存（比如1.5G），并且它至少要占用可用内存的一半。
+
+经验之谈： 
+1．Server端JVM最好将-Xms和-Xmx设为相同值。为了优化GC，最好让-Xmn值约等于-Xmx的1/3。 
+2．一个GUI程序最好是每10到20秒间运行一次GC，每次在半秒之内完成。
+
+#注意： 
+1．增加Heap的大小虽然会降低GC的频率，但也增加了每次GC的时间。并且GC运行时，所有的用户线程将暂停，也就是GC期间，Java应用程序不做任何工作。
+2．Heap大小并不决定进程的内存使用量。进程的内存使用量要大于-Xmx定义的值，因为Java为其他任务分配内存，例如每个线程的Stack等。
+
+总堆内存 = 年轻带堆内存 + 年老带堆内存 + 持久带堆内存
